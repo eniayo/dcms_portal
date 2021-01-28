@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, url_for
+from flask import Flask, render_template, redirect, url_for, session
 from flask_bootstrap import Bootstrap
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, BooleanField
@@ -91,9 +91,9 @@ def dashboard():
 
 
 @app.route('/logout')
-@login_required
+#@login_required
 def logout():
-    logout_user()
+    session.pop('username', None)
     return redirect(url_for('index'))
 
 
